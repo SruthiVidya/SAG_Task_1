@@ -1,0 +1,1 @@
+cat company.json | jq ".$1"

@@ -1,0 +1,92 @@
+Linux & Bash Scripting
+
+1.	Create an file named file.txt, create an user sampleuser. Change the ownership of the file to sampleuser.
+
+Ans:
+
+touch file.txt
+useradd sample_user
+passwd sample_user
+chown sample_user file.txt
+
+2.	Switch to sample user in terminal then change the permission of the file.txt to the user and group as rwx
+
+Ans:
+
+su - sample_user
+chmod 771 file.txt
+
+3.	Increase the open file limit
+
+Ans:
+
+ulimit -n 100000
+ulimit -a
+
+4.	Increase the swapsize by adding new swap storage
+
+Ans:
+
+free
+fallocate -l 1M /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
+5.	Remove the swap storage
+
+Ans:
+
+swapoff /swapfile
+
+6.	Write an script that will read the file content.txt that contains the names,age,job title and print the value in this order “name(age) – jobtitle”
+Contents.txt file contents
+Raj 30 Developer
+Ram 25 Ops
+Gokul 21 Intern
+Sundar 45 CEO
+Anil 38 SRE
+Output example
+Raj(30) – Developer
+
+Ans:
+
+vi content.txt
+awk '{print $1"("$2") - "$3}' content.txt
+
+7.	Write an script that will get the company name as arguments(command line arguments) and print their products by parsing the following json file
+{
+“Ibm”: [“RedHat”,”Mainframe”,”IBM cloud”,”RHEL”],
+“google”: [“k8s”,”kaggle”,”firebase”],
+“microsoft”: [“windows”,”azure”,”office365”],
+“amazon”: [“AWS”,”AWS Gov”,”Amplify”],
+“softwareag”: [“webmethods”,”AIRS”,”ADABAS”,”CumIOT”]
+}
+
+Ans:
+
+touch company.json
+touch script.sh
+./script.sh ibm
+
+8.	Create an script that will calculate the sum of prime numbers between 0 to an given number(to be given as an argument) name it child.sh, create another script named parent.sh which check if the child script exists in current dir and if exists change permission to execute for current user and call the child script from the parent script passing the number as argument
+
+Ans:
+
+vi child.sh
+vi parent.sh
+./parent.sh
+
+9.	Install the apache httpd server(centos preferred), and the home page should say “SoftwareAG”
+
+Ans:
+
+apt-get update
+apt-get install apache2
+echo ‘
+<html>
+<head>
+<h1>SoftwareAG</h1>
+</head>
+</html>
+‘>/var/www/html/index.html

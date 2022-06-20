@@ -1,0 +1,11 @@
+#!/bin/bash
+#Author : Sruthi R
+#Date Modified : 15/6/2022
+#Description: To call child program. Command line
+if [ -f "child.sh" ]
+then
+  chmod 700 child.sh
+  ./child.sh 30
+else
+  echo "child.sh not found"
+fi
