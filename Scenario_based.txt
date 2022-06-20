@@ -17,14 +17,14 @@ sudo git clone git@github.com:SruthiVidya/web_SAG.git
 
 3.Create an bash script which will pull the contents from the GitHub Repo every 5 hours (use Linux Cron) to the local cloned repo, The script should log all these activities to an log file with timestamp (file which keep track of all script runs)
 
-pull.sh
+pullsc.sh
 git pull
 head -n 1 /var/log/lastlog/ >> loglist.txt
 date>>log.txt
 
 crontab -l
-* */5 * * * pull.sh
+* */5 * * * pullsc.sh
 
 4.Spin up the container out of the image you create from the docker file, expose the port 80, mount the dir where you have cloned the git repo to the dir inside the container from where httpd2 server reads the HTML files (/var/www/html)
 
-sudo docker run -p 80:80 -v /home/ec2-user/ web_SAG:/var/www/html myserver
+sudo docker run -p 80:80 -v /home/ec2-user/ web_SAG:/var/www/html bridge_network
